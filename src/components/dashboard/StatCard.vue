@@ -17,7 +17,7 @@
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
-      <span :class="`font-semibold ${textColor} dark:text-white`">
+      <span :class="`font-semibold ${textColor} text-white`">
         {{ title.includes('Open')
           ? 'Open'
           : title.includes('In Progress')
@@ -27,10 +27,10 @@
           : 'Total' }}
       </span>
     </div>
-    <h3 class="text-4xl font-bold text-gray-800 dark:text-white">
+    <h3 class="text-4xl font-bold text-white">
       {{ value }}
     </h3>
-    <p class="text-gray-600 mt-2 dark:text-gray-300">{{ title }}</p>
+    <p class=" mt-2 text-gray-300">{{ title }}</p>
   </div>
 </template>
 

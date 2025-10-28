@@ -1,19 +1,19 @@
 <template>
-  <div class="mt-8 bg-white p-6 rounded-2xl shadow-lg dark:bg-gray-800 relative">
-    <h3 class="text-xl font-bold text-gray-800 mb-4 dark:text-white">
+  <div class="mt-8 p-6 rounded-2xl shadow-lg bg-gray-800 relative">
+    <h3 class="text-xl font-bold mb-4 text-white">
       Analytics
     </h3>
-    <div v-if="showLoading" class="absolute inset-0 flex items-center justify-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg z-10">
+    <div v-if="showLoading" class="absolute inset-0 flex items-center justify-center bg-gray-800/50 backdrop-blur-sm rounded-lg z-10">
       <div class="flex flex-col items-center gap-3">
         <div class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        <p class="text-gray-600 dark:text-gray-300">
+        <p class="text-gray-300">
           Loading chart data...
         </p>
       </div>
     </div>
     <div ref="chartRef" class="w-full overflow-x-auto min-h-[400px]">
       <div v-if="tickets && tickets.length > 0" class="w-full h-full"></div>
-      <p v-else class="text-gray-500 dark:text-gray-400 text-center py-8">
+      <p v-else class="text-gray-400 text-center py-8">
         No data available for analytics. Create some tickets to see the chart.
       </p>
     </div>

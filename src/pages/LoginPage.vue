@@ -20,157 +20,157 @@
 				:class="{ 'border-red-500': errors.email }"
 				v-model="formData.email"
 				@blur="handleBlur"
-				@input="clearError('email')"   <!-- ✅ Added -->
+				@input="clearError('email')"
 				/>
-				<p v-if="errors.email" class="text-red-500 text-sm mt-1">
-					{{ errors.email }}
-				</p>
-			</div>
-
-			<!-- Password -->
-			<div class="mb-3">
-				<label class="block text-gray-200 text-sm font-medium mb-1">
-					Password
-				</label>
-				<input
-				type="password"
-				name="password"
-				class="w-full p-2 border rounded-md bg-gray-700 text-white"
-				:class="{ 'border-red-500': errors.password }"
-				v-model="formData.password"
-				@blur="handleBlur"
-				@input="clearError('password')"   <!-- ✅ Added -->
-				/>
-				<p v-if="errors.password" class="text-red-500 text-sm mt-1">
-					{{ errors.password }}
-				</p>
-			</div>
-
-			<!-- Buttons -->
-			<div class="w-full flex flex-col sm:flex-row justify-between items-center gap-3 mt-5">
-				<button
-					type="submit"
-					class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition active:scale-95"  <!-- ✅ Added scale -->
-					:disabled="isSubmitting"
-					>
-					{{ isSubmitting ? 'Logging in...': 'Login' }}
-				</button>
-			</div>
-
-			<p class="text-sm text-center mt-4 text-gray-600 dark:text-gray-300">
-				Don't have an account?
-				<span
-					@click="$router.push('/signup')"
-					class="text-indigo-600 hover:underline cursor-pointer"
-					>
-					Sign up
-				</span>
+			<p v-if="errors.email" class="text-red-500 text-sm mt-1">
+				{{ errors.email }}
 			</p>
+		</div>
 
-			<div class="text-center mt-4">
-				<button
-					@click="$router.push('/')"
-					class="text-indigo-600 hover:text-indigo-800 font-semibold transition btn-bounce"
-					>
-					← Back to Home
-				</button>
-			</div>
-		</form>
+		<!-- Password -->
+		<div class="mb-3">
+			<label class="block text-gray-200 text-sm font-medium mb-1">
+				Password
+			</label>
+			<input
+			type="password"
+			name="password"
+			class="w-full p-2 border rounded-md bg-gray-700 text-white"
+			:class="{ 'border-red-500': errors.password }"
+			v-model="formData.password"
+			@blur="handleBlur"
+			@input="clearError('password')"
+			/>
+		<p v-if="errors.password" class="text-red-500 text-sm mt-1">
+			{{ errors.password }}
+		</p>
 	</div>
+
+	<!-- Buttons -->
+	<div class="w-full flex flex-col sm:flex-row justify-between items-center gap-3 mt-5">
+		<button
+			type="submit"
+			class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition active:scale-95"  <!-- ✅ Added scale -->
+			:disabled="isSubmitting"
+			>
+			{{ isSubmitting ? 'Logging in...': 'Login' }}
+		</button>
+	</div>
+
+	<p class="text-sm text-center mt-4 text-gray-600 dark:text-gray-300">
+		Don't have an account?
+		<span
+			@click="$router.push('/signup')"
+			class="text-indigo-600 hover:underline cursor-pointer"
+			>
+			Sign up
+		</span>
+	</p>
+
+	<div class="text-center mt-4">
+		<button
+			@click="$router.push('/')"
+			class="text-indigo-600 hover:text-indigo-800 font-semibold transition btn-bounce"
+			>
+			← Back to Home
+		</button>
+	</div>
+</form>
+</div>
 </template>
 
 <script>
-	import { ref } from 'vue'
-	import { useRouter } from 'vue-router'
-	import { useToast } from '../composables/useToast'
-	import { loginUser } from '../utils/auth'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useToast } from '../composables/useToast'
+import { loginUser } from '../utils/auth'
 
-	export default {
-		name: 'LoginPage',
-		setup() {
-		const router = useRouter()
-		const toast = useToast()
+export default {
+name: 'LoginPage',
+setup() {
+const router = useRouter()
+const toast = useToast()
 
-		const formData = ref({
-		email: '',
-		password: ''
-		})
+const formData = ref({
+email: '',
+password: ''
+})
 
-		const errors = ref({})
-		const isSubmitting = ref(false)
+const errors = ref({})
+const isSubmitting = ref(false)
 
-		const validateField = (name, value) => {
-		switch (name) {
-	case 'email':
-		if (!value.trim()) return 'Email is required'
-		if (!/\S+@\S+\.\S+/.test(value))
-		return 'Enter a valid email address'
-		return ''
-	case 'password':
-		if (!value) return 'Password is required'
-		if (value.length < 6)
-		return 'Password must be at least 6 characters'
-		return ''
-	default:
-		return ''
-		}
-		}
+const validateField = (name, value) => {
+switch (name) {
+case 'email':
+if (!value.trim()) return 'Email is required'
+if (!/\S+@\S+\.\S+/.test(value))
+return 'Enter a valid email address'
+return ''
+case 'password':
+if (!value) return 'Password is required'
+if (value.length < 6)
+return 'Password must be at least 6 characters'
+return ''
+default:
+return ''
+}
+}
 
-		const handleBlur = (event) => {
-		const { name, value } = event.target
-		const error = validateField(name, value)
-		if (error) {
-		errors.value[name] = error
-		}
-		}
+const handleBlur = (event) => {
+const { name, value } = event.target
+const error = validateField(name, value)
+if (error) {
+errors.value[name] = error
+}
+}
 
-		// ✅ Clear field error as user types
-		const clearError = (field) => {
-		if (errors.value[field]) {
-		errors.value[field] = ''
-		}
-		}
 
-		const handleSubmit = () => {
-		const newErrors = {}
-		Object.keys(formData.value).forEach((key) => {
-		const error = validateField(key, formData.value[key])
-		if (error) newErrors[key] = error
-		})
+const clearError = (field) => {
+if (errors.value[field]) {
+errors.value[field] = ''
+}
+}
 
-		errors.value = newErrors
+const handleSubmit = () => {
+const newErrors = {}
+Object.keys(formData.value).forEach((key) => {
+const error = validateField(key, formData.value[key])
+if (error) newErrors[key] = error
+})
 
-		if (Object.keys(newErrors).length > 0) {
-		return
-		}
+errors.value = newErrors
 
-		isSubmitting.value = true
+if (Object.keys(newErrors).length > 0) {
+return
+}
 
-		setTimeout(() => {
-		const { success, user, message } = loginUser(
-		formData.value.email,
-		formData.value.password
-		)
+isSubmitting.value = true
 
-		if (success) {
-		toast.show('Account log in successful', 'success')
-		router.push('/dashboard')
-		} else {
-		toast.show(message, 'error')
-		}
+setTimeout(() => {
+const { success, user, message } = loginUser(
+formData.value.email,
+formData.value.password
+)
 
-		isSubmitting.value = false
-		}, 400)
-		}
+if (success) {
+toast.show('Account log in successful', 'success')
+router.push('/dashboard')
+} else {
+toast.show(message, 'error')
+}
 
-		return {
-		formData,
-		errors,
-		isSubmitting,
-		handleBlur,
-		clearError,
-		handleSubmit
-		}
-		}
-		}
-	</script>
+isSubmitting.value = false
+}, 400)
+}
+
+return {
+formData,
+errors,
+isSubmitting,
+handleBlur,
+clearError,
+handleSubmit
+}
+}
+}
+</script>
