@@ -1,55 +1,53 @@
 <template>
   <div class="page min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
     <!-- Navbar -->
-    <nav class="bg-white shadow-sm border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <Logo />
-          <div class="flex items-center gap-4">
-            <!-- Dashboard Button (Desktop) -->
-            <button
-              @click="$router.push('/dashboard')"
-              class="hidden md:inline-flex items-center text-gray-600 hover:text-gray-800 font-medium dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md">
-              Dashboard
-            </button>
+       <nav class=" shadow-sm border-b bg-gray-800 border-gray-600">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center h-16">
+            <Logo />
+            <div class="flex items-center gap-4">
+              <button
+                @click="$router.push('/dashboard')"
+                class="hidden md:inline-flex items-center font-medium text-gray-300 hover:text-white px-3 py-2 rounded-md">
+                Dashboard
+              </button>
 
-            <!-- Dashboard Icon (Mobile) -->
-            <button
-              @click="$router.push('/dashboard')"
-              class="inline-flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
-              aria-label="Dashboard">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
-                <path d="M13 5v2"/>
-                <path d="M18 5v2"/>
-                <path d="M2 9h20"/>
-              </svg>
-            </button>
+              <button
+                @click="$router.push('/dashboard')"
+                class="inline-flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-700 text-gray-200 hover:bg-gray-600"
+                aria-label="Manage tickets">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                  <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                  <path d="M13 5v2"/>
+                  <path d="M18 5v2"/>
+                  <path d="M2 9h20"/>
+                </svg>
+              </button>
 
-            <!-- Logout -->
-            <button
-              @click="handleLogout"
-              class="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                <polyline points="16 17 21 12 16 7"/>
-                <line x1="21" x2="9" y1="12" y2="12"/>
-              </svg>
-              Logout
-            </button>
+              <button
+                @click="handleLogout"
+                class="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                  <polyline points="16 17 21 12 16 7"/>
+                  <line x1="21" x2="9" y1="12" y2="12"/>
+                </svg>
+                Logout
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    
 
     <!-- Main Content -->
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-          <h2 class="text-3xl font-bold text-gray-800 mb-2 dark:text-white">
+          <h2 class="text-4xl font-bold mb-2 text-white">
             Ticket Management
           </h2>
-          <p class="text-gray-600 dark:text-gray-300">
+          <p class="text-gray-300">
             Create, view, edit, and delete tickets
           </p>
         </div>
@@ -67,7 +65,7 @@
               type="text"
               placeholder="Search tickets..."
               v-model="searchTerm"
-              class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="block w-full pl-10 pr-3 py-2 border rounded-lg  bg-gray-800 :border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 

@@ -50,7 +50,7 @@
 	<div class="w-full flex flex-col sm:flex-row justify-between items-center gap-3 mt-5">
 		<button
 			type="submit"
-			class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition active:scale-95"  <!-- ✅ Added scale -->
+			class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition active:scale-95"  
 			:disabled="isSubmitting"
 			>
 			{{ isSubmitting ? 'Logging in...': 'Login' }}

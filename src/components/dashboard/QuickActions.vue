@@ -14,7 +14,7 @@
 						<path d="M2 9h20" />
 					</svg>
 				</div>
-				<span class="font-semibold text-gray-800 dark:text-white">Manage Tickets</span>
+				<span class="font-semibold text-white">Manage Tickets</span>
 			</button>
 
 			<button

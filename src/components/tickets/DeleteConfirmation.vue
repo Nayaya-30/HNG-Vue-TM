@@ -1,6 +1,6 @@
 <template>
   <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-    <div class=" rounded-2xl shadow-2xl max-w-md w-full p-8 bg-gray-800">
+    <div class=" rounded-2xl shadow-2xl max-w-md w-full p-8 bg-gray-900/50">
       <div class="text-center">
         <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 dark:bg-red-900/30">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-red-600 dark:text-red-400">

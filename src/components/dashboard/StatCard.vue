@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+  <div class=" p-6 rounded-2xl shadow-lg border bg-gray-800 border-gray-700">
     <div class="flex items-center justify-between mb-4">
       <div :class="`w-12 h-12 ${bgColor} rounded-xl flex items-center justify-center`">
         <svg v-if="icon === 'bar-chart'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="`w-6 h-6 ${textColor.replace('text-', 'text-')}`">
@@ -17,7 +17,7 @@
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
-      <span :class="`font-semibold ${textColor} text-white`">
+      <span :class="`font-semibold ${textColor}`">
         {{ title.includes('Open')
           ? 'Open'
           : title.includes('In Progress')
